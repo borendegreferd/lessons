@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!-- Почему код дает именно такие результаты?
+var a = 1, b = 1, c, d;
+c = ++a; alert(c);           // 2 префиксный инкремент (увелечение на 1)
+d = b++; alert(d);           // 1 постфиксный инкремент (увелечение на 1 Компилятор создаёт временную копию переменной
+    х, увеличивает или уменьшает оригинальный х (не копию), а затем возвращает копию. Только после возврата копия x удаляется.
+c = (2+ ++a); alert(c);      // 5 прибавляем 2 к увеличенному на 1 предыдущему результату
+d = (2+ b++); alert(d);      // 4 прибавляем 2 к предыдущему результату
+alert(a);                    // 3 дважды на один увеличили а
+alert(b);                    // 3 дважды на один увеличили б -->
+
+<!-- Чему будет равен x?
+var a = 2;
+var x = 1 + (a *= 2); 1+(2*=2) = 5 -->
+
+<!-- Объявить две целочисленные переменные — a и b и задать им произвольные начальные значения. Затем написать скрипт,
+    который работает по следующему принципу:
+    a. если a и b положительные, вывести их разность;
+    b. если а и b отрицательные, вывести их произведение;
+    c. если а и b разных знаков, вывести их сумму; -->
+<script>
+    let a = -8, b = 3;
+    if (a >= 0 && b >= 0) {
+        console.log(a - b);
+    } else if (a < 0 && b < 0) {
+        console.log(a * b)
+    } else if ((a < 0 && b >= 0) || (a >= 0 && b < 0)) {
+        console.log(a + b)
+    }
+</script>
+
+<!-- Присвоить переменной а значение в промежутке [0..15]. С помощью оператора switch организовать вывод чисел от a
+    до 15. -->
+<script>
+    a = +prompt('Введите число от 1 до 15');
+    switch (a) {
+        case 1:
+            console.log(a++);
+        case 2:
+            console.log(a++);
+        case 3:
+            console.log(a++);
+        case 4:
+            console.log(a++);
+        case 5:
+            console.log(a++);
+        case 6:
+            console.log(a++);
+        case 7:
+            console.log(a++);
+        case 8:
+            console.log(a++);
+        case 9:
+            console.log(a++);
+        case 10:
+            console.log(a++);
+        case 11:
+            console.log(a++);
+        case 12:
+            console.log(a++);
+        case 13:
+            console.log(a++);
+        case 14:
+            console.log(a++);
+        case 15:
+            console.log(a);
+            break;
+        default:
+            console.log('Error: a должно быть от 1 до 15');
+            break;
+    }
+</script>
+<!-- Реализовать четыре основные арифметические операции в виде функций с двумя параметрами. Обязательно использовать
+    оператор return. -->
+<script>
+    function sum(a, b) {
+        return a + b;
+    }
+
+    function diff(a, b) {
+        return a - b;
+    }
+
+    function div(a, b) {
+        return a / b;
+    }
+
+    function mult(a, b) {
+        return a * b;
+    }
+    // console.log(div(4,8));
+</script>
+<!-- Реализовать функцию с тремя параметрами: function mathOperation(arg1, arg2, operation), где arg1, arg2 — значения
+    аргументов, operation — строка с названием операции. В зависимости от переданного значения выполнить одну из
+    арифметических операций (использовать функции из пункта 5) и вернуть полученное значение (применить switch). -->
+<script>
+    function mathOperation(arg1, arg2, operation) {
+        switch (operation) {
+            case '+':
+                return arg1 + arg2;
+                break;
+            case '-':
+                return arg1 - arg2;
+                break;
+            case '/':
+                return arg1 / arg2;
+                break;
+            case '*':
+                return arg1 * arg2;
+                break;
+        }
+    }
+    // console.log(mathOperation(6,7,'*'));
+</script>
+</body>
+</html>
