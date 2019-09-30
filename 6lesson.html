@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="ie=edge" http-equiv="X-UA-Compatible">
+  <title>Basket</title>
+  <style>
+    body {
+
+      display: flex;
+      justify-content: center;
+    }
+
+    img {
+      margin: 100px;
+      width: 180px;
+      height: 150px;
+      border-radius: 190px;
+      margin-left: 0px;
+    }
+
+    .text {
+      margin: 5px;
+      margin-right: 40px;
+    }
+
+    .button {
+      border-radius: 25px;
+      text-align: center;
+      margin: 5px;
+    }
+
+    .add {
+      background-color: bisque;
+    }
+
+    .basket {
+      margin: 0;
+      position: absolute;
+      margin-right: 40px;
+
+    }
+
+  </style>
+</head>
+
+<body>
+<script>
+  document.addEventListener('DOMContentLoaded', e => {
+    sum = 0;
+
+    class Product {
+      constructor({...params}) {
+        this.name = params.name,
+            this.price = params.price,
+            this.urls = params.urls;
+      }
+    }
+
+    let tea = new Product({
+      name: 'tea',
+      price: 200,
+      urls: [
+        './index.jpg',
+      ],
+    });
+    let coffee = new Product({
+      name: 'coffee',
+      price: 400,
+      urls: [
+        './coffee.jpg',
+      ],
+    });
+    let catalog = [tea, coffee];
+    let basket = [];
+    catalog.forEach(item => {
+      const $card = document.createElement('div');
+      $card.className = 'card';
+      document.body.appendChild($card);
+
+      const $pic = document.createElement('img');
+      let $picSrc = document.createAttribute('src');
+      $picSrc.value = item.urls[0];
+      $pic.setAttributeNode($picSrc);
+
+      const $name = document.createElement('h4');
+      $name.className = 'text';
+      $name.innerText = item.name;
+
+      const $price = document.createElement('span');
+      $price.className = 'text';
+      $price.innerText = item.price;
+
+      const $buttonAdd = document.createElement('button');
+      $buttonAdd.className = 'button add';
+      $buttonAdd.innerText = 'Buy';
+      $buttonAdd.addEventListener('click', (e) => {
+        e.preventDefault();
+        basket.push(item);
+        alert(`${item.name} added to basket per ${item.price} usd`);
+        sum += item.price;
+      });
+
+      $card.appendChild($pic);
+      $card.appendChild($name);
+      $card.appendChild($price);
+      $card.appendChild($buttonAdd);
+
+    });
+    $basket = document.createElement('div');
+    $basket.className = 'basket';
+    document.body.appendChild($basket);
+    window.setInterval(checkBasket, 2000);
+
+    function checkBasket() {
+      $basket.innerText = `in basket ${basket.length} items on ${sum} usd`;
+    }
+
+    function modalWindow(item) {
+      const $modal = document.createElement('div');
+      $modal.className = 'modal';
+      document.body.appendChild($modal);
+
+      $modal.appendChild($pic);
+    }
+  });
+</script>
+</body>
+</html>

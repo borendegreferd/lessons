@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="basket"></div>
+<div id="catalog"></div>
+<script>
+  /* let basket = {
+    products: [],
+    countBasketPrice: function () {
+      let sum = 0;
+      for (let i = 0; i < this.products.length; i++) {
+        sum = sum + this.products[i].price * this.products[i].count;
+      }
+      return sum;
+    }
+  };   basket.products = products;
+  console.log(basket.countBasketPrice());*/
+  let products = [
+    {name: 'tea', price: 200, count: 20},
+    {name: 'coffee', price: 300, count: 10},
+    {name: 'water', price: 100, count: 7},
+  ];
+  let basket = document.getElementById('basket');
+  let catalog = document.getElementById('catalog');
+  let name = '';
+  let sum = 0;
+  let count = 0;
+
+  function countBasketPrice(products) {
+    products.forEach(el => sum += el.count * el.price);
+    products.forEach(el => count += el.count);
+    products.forEach(el => name += el.name + ' ');
+    if (count === 0) {
+      basket.textContent = 'empty basket';
+    }
+    basket.textContent = `in basket: ${count} items per ${sum} $`;
+
+      catalog.textContent = `products: ${name} ` ;
+
+  }
+
+  countBasketPrice(products);
+</script>
+</body>
+</html>

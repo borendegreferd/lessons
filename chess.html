@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+  .cell {
+    width: 25px;
+    height: 25px;
+  }
+
+  .black {
+    background-color: black;
+  }
+</style>
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="wrapper"></div>
+<div id="table"></div>
+<script>
+  let rows = 9;
+  let columns = 9;
+  let $wrapper;
+  $wrapper = document.getElementById('wrapper');
+  let $table = document.getElementById('table');
+  $wrapper.appendChild($table);
+  for (let i = 0; i < rows; i++) {
+    let $row = document.createElement('tr');
+    for (let j = 0; j < columns; j++) {
+      let $cell = document.createElement('td');
+      $cell.classList.add('cell');
+      if (i === 8) {
+        $cell.textContent = String.fromCharCode(64 + j);
+      } else if (j === 0) {
+        $cell.textContent = String.fromCharCode(56 - i);
+      } else if ((i + j) % 2) {
+        $cell.classList.add('black');
+      }
+      /* else  if(i===2){
+         $cell.textContent=String.fromCharCode(9823);
+       } */
+
+      $row.appendChild($cell);
+    }
+    $table.appendChild($row);
+  }
+</script>
+</body>
+</html>
