@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+  function basket({...params}) {
+    this.name = params.name;
+    this.goodsList = params.products;
+  }
+
+  function products({...params}) {
+    this.name = params.name;
+    this.price = params.price;
+  }
+
+  let coffee = new products({name: 'coffee', price: 400});
+  let tea = new products({name: 'tea', price: 200});
+  let productBasket = new basket({
+    name: 'basket',
+    products: [coffee, tea],
+  });
+
+  basket.prototype.getSumOfGoods = function() {
+    let sum = 0;
+    this.goodsList.forEach(element => {
+      sum += element.price;
+    });
+    return sum;
+  };
+
+  console.log(productBasket.getSumOfGoods());
+</script>
+</body>
+</html>
